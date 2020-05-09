@@ -70,7 +70,7 @@ LatinSquare::LatinSquare(size_t n_dimension) : n(n_dimension){
 		square[i] = new T[n];
 	}
 
-	//create the contents set, and initialize it.
+	//create the contents set, and initialize it
 	std::set<T> contents;
 	for(typename T q = 0; q < n; q++){
 		contents.insert(q);
@@ -78,6 +78,16 @@ LatinSquare::LatinSquare(size_t n_dimension) : n(n_dimension){
 
 	//create the contents set 
 	solve(contents);
+}
+
+template <typename T>
+LatinSquare::~LatinSquare(){
+	//deallocate square grid
+	for(size_t i = 0; i < n; i++){
+		delete [] square[i];
+	}
+
+	delete [] square;
 }
 
 
@@ -110,6 +120,10 @@ LatinSquare::LatinSquare(size_t n_dimension, std::set<T>& contents){
 
 	//create the contents set 
 	solve(contents);
+}
+
+void solve(std::set<T>& contents){
+
 }
 
 #endif
