@@ -310,4 +310,9 @@ void LatinSquare::print(std::ostream outstream){
 
 }
 
+template <typename T>
+ostream& operator<<(ostream& outstream, LatinSquare<T> lsquare){
+	lsquare.print(outstream);
+}
+
 #endif
