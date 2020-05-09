@@ -8,6 +8,7 @@
 //NTS: Consider adding "reduced" bool to constructor for additional constraints
 //NTS: Make sure weird stuff doesn't happen with dynamic allocation and elements passed in the set
 //(should I be allocating them here???, Does the type need to support the assignment/copy constructor???)
+//NTS: CONSIDER ADDING RUNTIME ANALYSIS
 
 /*
 * Definition for the LatinSquare class, which represents an n x n grid
@@ -191,7 +192,7 @@ bool LatinSquare::solveHelp(std::set<T>& contents, int row, int col){
 
 		num_tried++;		
 	}
-	
+
 	/*
 	* If we couldn't generate a solution from any of the attempted values, the issues lies earlier in the square
 	* return false to let earlier functions this is the case
@@ -228,10 +229,53 @@ bool LatinSquare::isNewValid(size_t row, size_t col){
 	return row_is_valid && col_is_valid;
 }
 
-//checks the validity of the entire Latin Square
+//checks the validity of the entire Latin Square (assumes all values have been initialized)
 template <typename T>
 bool LatinSquare::isValid(){
-	
+	//generate a set of elements for this row/col, which will check for repeated items
+	std::set<T> seen_before;
+
+	//check that row elements are distinct within their row
+	for(size_t r = 0; r < n; r++){
+		for(size_t c = 0; c < n; c++){
+
+			//if we haven't seen it before, add it to the set becuase we have noe
+			if(seen_before.find(square[r][c]) == seen_before.end()){
+				seen_before.insert(square[r][c]);
+			}
+			//if we've seen it before the distinctness requirement is violated and this isn't a Latin square! return false
+			else{
+				return false;
+			}
+		}
+
+		//clear after fully checking a row
+		seen_before.clear();
+	}
+
+	//now check for distinctness in columns
+	for(size_t c = 0; c < n; c++){
+		for(size_t r = 0; r < n; r++){
+
+			//if we haven't seen it before, add it to the set becuase we have noe
+			if(seen_before.find(square[r][c]) == seen_before.end()){
+				seen_before.insert(square[r][c]);
+			}
+			//if we've seen it before the distinctness requirement is violated and this isn't a Latin square! return false
+			else{
+				return false;
+			}
+		}
+
+		//clear after fully checking a column
+		seen_before.clear();
+	}
+
+	/*
+	* if we reach here it means that the distinctness requirement hasn't been violated within any of the rows
+	* or columns in the Latin square. Return true.
+	*/
+	return true;
 }
 
 #endif
