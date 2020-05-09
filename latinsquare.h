@@ -43,6 +43,19 @@ private:
 	//Called upon construction. This will solve the Latin square and populate it with T objects
 	void solve(std::set<T>& contents);
 
+	/*
+	* Helper function designed to be called after a new value is inserted at square[row][col]
+	*
+	* In order to maintain O(n) complexity, this function only compares the new value at square[row][col]
+	* to values at square[row][c] where c < col and square[r][col] where r < row.
+	*
+	* If you desire to evaluate the validity of the entire grid, use isValid()
+	*/
+	bool isNewValid(size_t row, size_t col);
+
+	// O(n^2) complexity function to check the validity of the entire Latin square
+	bool isValid();
+
 	//Stores the dimensions of the n x n Latin square
 	size_t n;
 
