@@ -53,7 +53,7 @@ private:
 	*/
 	bool isNewValid(size_t row, size_t col);
 
-	// O(n^2) complexity function to check the validity of the entire Latin square
+	//Checks the validity of the entire Latin square
 	bool isValid();
 
 	//Stores the dimensions of the n x n Latin square
@@ -144,12 +144,36 @@ void LatinSquare::solve(std::set<T>& contents){
 
 
 //compares square[row][col] to values at square[row][c] where c < col and square[r][col] where r < row.
-bool isNewValid(size_t row, size_t col){
+template <typename T>
+bool LatinSquare::isNewValid(size_t row, size_t col){
+	bool row_is_valid = true;
+	bool col_is_valid = true;
 
+	//check row validity
+	for(size_t r = row-1; r >= 0; r-=1){
+		//immediately return false if distinctness requriement is violated
+		if(square[r][col] == square[row][col]){
+			row_is_valid = false;
+			return row_is_valid;
+		}
+	}
+
+	//checl column validity
+	for(size_t c = col-1; c >= 0; c-=1){
+		//immediately return false if distinctness requriement is violated
+		if(square[row][c] == square[row][col]){
+			col_is_valid = false;
+			return col_is_valid;
+		}
+	}
+
+	//return wether the searched row and column are valid in comparison to the value at square[row][col]
+	return row_is_valid && col_is_valid;
 }
 
 //checks the validity of the entire Latin Square
-bool isValid(){
+template <typename T>
+bool LatinSquare::isValid(){
 	
 }
 
