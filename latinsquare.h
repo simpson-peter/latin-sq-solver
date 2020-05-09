@@ -54,7 +54,10 @@ private:
 	*/
 	bool isNewValid(size_t row, size_t col);
 
-	//Checks the validity of the entire Latin square
+	/*
+	* Checks the validity of the entire Latin square
+	* Worst Case Runtime: O((n^2)logn)
+	*/
 	bool isValid();
 
 	//Stores the dimensions of the n x n Latin square
@@ -146,7 +149,7 @@ void LatinSquare::solve(std::set<T>& contents){
 }
 
 /* 
-* Recursive helper for solving the Latin square
+* Recursive, backtracking, helper for solving the Latin square
 * attempts to find a value for square[row][col], then call solveHelp for the next space in the square
 */
 template <typename T>
@@ -181,7 +184,7 @@ bool LatinSquare::solveHelp(std::set<T>& contents, int row, int col){
 		square[row][col] = *it;
 
 		//if the current assignment is valid, try solving the next square
-		if(isNewValid[row][col]){
+		if(isNewValid(row, col)){
 
 			//return true if a solution is found by subsequent solveHelp iterations
 			if(solveHelp(contents, row, col+1)){
@@ -276,6 +279,35 @@ bool LatinSquare::isValid(){
 	* or columns in the Latin square. Return true.
 	*/
 	return true;
+}
+
+//NTS: CONSIDER ADDING FORMATTED OUTPUT
+template <typename T>
+void LatinSquare::print(std::ostream outstream){
+	outstream<<n<<" x "<<n<<" Latin Square" << std::endl;
+    outstream << std::setw(4) << " ";
+
+    outstream << std::endl;
+    outstream << "    ";
+    for(size_t cidx = 0; cidx < n; cidx++) {
+        outstream <<  std::setw(4) << "====="  << "=====";
+    }
+    outstream << std::endl;
+
+    // Start printing square data
+    for(size_t ridx = 0; ridx < n; ridx++) {
+        // Print border
+        outstream << std::setw(2) << " |";
+        // Print values
+        for(size_t cidx = 0; cidx < n; cidx++) {
+            outstream << std::setw(4) << " ";
+           
+            outstream << std::setw(4) << square[ridx][cidx];
+        }
+        outstream <<  "   |";
+        outstream << std::endl;
+    }
+
 }
 
 #endif
