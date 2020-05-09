@@ -157,24 +157,46 @@ bool LatinSquare::solveHelp(std::set<T>& contents, int row, int col){
 	}
 
 	//check if we've filled the entire square, check validity if so
-	//NTS: THIS IS PROBABLY AN UNECESSARY STEP, THINK OF EDGE CASES THOUGH
+	//NTS: THIS IS PROBABLY AN UNECESSARY STEP (probably could just return true since we've gone off the map)
 	if(row >= n){
 		return isValid();
 	}
 
-	//tracks the number of values tried, so we can break early if contents.size > n, 
-	//but still want to maintain efficient iteration through the set 
+	/*
+	/* num_tried tracks the number of values tried, so we can break early if contents.size > n, 
+	/* but still want to maintain efficient iteration through the set 
+	*/
 	int num_tried = 0;
 
-	//iterate through set, seeing if each assignment is valid, and recursing to the next value if so
+	//iterate through set, seeing if each assignment is valid, and recursing to solve the next space if so
 	for(std::set<T>::iterator it = contents.begin();
 		it != contents.end();
 		++it){
 
+		if(num_tried >= n){
+			break;
+		}
+
 		square[row][col] = *it;
 
+		//if the current assignment is valid, try solving the next square
+		if(isNewValid[row][col]){
 
+			//return true if a solution is found by subsequent solveHelp iterations
+			if(solveHelp(contents, row, col+1)){
+				return true;
+			}
+			//otherwise the loop will continue and keep trying values
+		}
+
+		num_tried++;		
 	}
+	
+	/*
+	* If we couldn't generate a solution from any of the attempted values, the issues lies earlier in the square
+	* return false to let earlier functions this is the case
+	*/
+	return false;
 }
 
 
