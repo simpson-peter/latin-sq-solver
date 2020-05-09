@@ -138,8 +138,43 @@ LatinSquare::LatinSquare(size_t n_dimension, std::set<T>& contents){
 	solve(contents);
 }
 
+//NTS: Probably just have to overload this if making a reduced class
+template <typename T>
 void LatinSquare::solve(std::set<T>& contents){
+	solveHelp(contents, 0, 0);
+}
 
+/* 
+* Recursive helper for solving the Latin square
+* attempts to find a value for square[row][col], then call solveHelp for the next space in the square
+*/
+template <typename T>
+bool LatinSquare::solveHelp(std::set<T>& contents, int row, int col){
+	//check if it's necessary to wrap down to the next row
+	if(col >= n){
+		col = 0;
+		row += 1;
+	}
+
+	//check if we've filled the entire square, check validity if so
+	//NTS: THIS IS PROBABLY AN UNECESSARY STEP, THINK OF EDGE CASES THOUGH
+	if(row >= n){
+		return isValid();
+	}
+
+	//tracks the number of values tried, so we can break early if contents.size > n, 
+	//but still want to maintain efficient iteration through the set 
+	int num_tried = 0;
+
+	//iterate through set, seeing if each assignment is valid, and recursing to the next value if so
+	for(std::set<T>::iterator it = contents.begin();
+		it != contents.end();
+		++it){
+
+		square[row][col] = *it;
+
+
+	}
 }
 
 
@@ -167,7 +202,7 @@ bool LatinSquare::isNewValid(size_t row, size_t col){
 		}
 	}
 
-	//return wether the searched row and column are valid in comparison to the value at square[row][col]
+	//return whether the searched row and column are valid in comparison to the value at square[row][col]
 	return row_is_valid && col_is_valid;
 }
 
