@@ -93,9 +93,12 @@ LatinSquare::LatinSquare(size_t n_dimension) : n(n_dimension){
 	solve(contents);
 }
 
+//LatinSquare destructor
 template <typename T>
 LatinSquare::~LatinSquare(){
+
 	//deallocate square grid
+
 	for(size_t i = 0; i < n; i++){
 		delete [] square[i];
 	}
@@ -104,7 +107,7 @@ LatinSquare::~LatinSquare(){
 }
 
 
-/*.
+/*
 *
 * Constructor which recieves a set of contents, which must have at least n members
 * Will attempt to create a std::set of Ts by assigning them numeric values
@@ -135,8 +138,19 @@ LatinSquare::LatinSquare(size_t n_dimension, std::set<T>& contents){
 	solve(contents);
 }
 
-void solve(std::set<T>& contents){
+void LatinSquare::solve(std::set<T>& contents){
 
+}
+
+
+//compares square[row][col] to values at square[row][c] where c < col and square[r][col] where r < row.
+bool isNewValid(size_t row, size_t col){
+
+}
+
+//checks the validity of the entire Latin Square
+bool isValid(){
+	
 }
 
 #endif
