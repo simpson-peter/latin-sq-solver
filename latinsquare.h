@@ -81,5 +81,35 @@ LatinSquare::LatinSquare(size_t n_dimension) : n(n_dimension){
 }
 
 
+/*.
+*
+* Constructor which recieves a set of contents, which must have at least n members
+* Will attempt to create a std::set of Ts by assigning them numeric values
+* and then call solve() to populate the square.
+*/
+//NTS: THIS MAY CAUSE MEMORY ALLOCATION ISSUES???
+template <typename T>
+LatinSquare::LatinSquare(size_t n_dimension, std::set<T>& contents){
+	//handle zero case
+	if(n == 0){
+		throw std::logic_error("Cannot construct a Latin square of size 0.")
+	}
+	//handle cases where cotents is smaller than n
+	if(contents.size() < n){
+		throw std::runtime_error("Size of set contents cannot be less than n.");
+	}
+	//aquire space for the square
+
+	//allocate the first column
+	square = new T*[n];
+
+	//allocate the rows
+	for(size_t i = 0; i < n; i++){
+		square[i] = new T[n];
+	}
+
+	//create the contents set 
+	solve(contents);
+}
 
 #endif
