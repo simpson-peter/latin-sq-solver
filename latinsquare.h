@@ -23,9 +23,11 @@
 template <typename T>
 class LatinSquare{
 public:
+	/*
 	//constructor for defualt integer Latin square (no need to pass in a set of contents)
 	//Note: only call this constructor if the LatinSquare instance has been templated as <int>
 	LatinSquare(unsigned n_dimension);
+	*/
 
 	//constructor for the templated Latin square. Set contents should contain at least n
 	//distinct Ts
@@ -100,6 +102,7 @@ LatinSquare<T>::LatinSquare(unsigned n_dimension) : n(n_dimension){
 	//create the contents set 
 	solve(contents);
 }
+
 
 //LatinSquare destructor
 template <typename T>
