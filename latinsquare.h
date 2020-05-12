@@ -162,7 +162,7 @@ void LatinSquare<T>::solve(std::set<T>& contents){
 * attempts to find a value for square[row][col], then call solveHelp for the next space in the square
 */
 template <typename T>
-bool LatinSquare<T>::solveHelp(std::set<T>& contents, int row, int col){
+bool LatinSquare<T>::solveHelp(std::set<T>& contents, unsigned row, unsigned col){
 	//check if it's necessary to wrap down to the next row
 	if(col >= n){
 		col = 0;
