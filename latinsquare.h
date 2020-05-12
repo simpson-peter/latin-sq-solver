@@ -79,7 +79,7 @@ private:
 * and then call solve() to populate the square.
 */
 //NTS: THIS MAY CAUSE MEMORY ALLOCATION ISSUES???
-
+template <typename T>
 LatinSquare<T>::LatinSquare(unsigned n_dimension) : n(n_dimension){
 	//aquire space for the square
 
@@ -102,7 +102,7 @@ LatinSquare<T>::LatinSquare(unsigned n_dimension) : n(n_dimension){
 }
 
 //LatinSquare destructor
-
+template <typename T>
 LatinSquare<T>::~LatinSquare(){
 
 	//deallocate square grid
@@ -122,7 +122,7 @@ LatinSquare<T>::~LatinSquare(){
 * and then call solve() to populate the square.
 */
 //NTS: THIS MAY CAUSE MEMORY ALLOCATION ISSUES???
-
+template <typename T>
 LatinSquare<T>::LatinSquare(unsigned n_dimension, std::set<T>& contents){
 	//handle zero case
 	if(n == 0){
@@ -147,7 +147,7 @@ LatinSquare<T>::LatinSquare(unsigned n_dimension, std::set<T>& contents){
 }
 
 //NTS: Probably just have to overload this if making a reduced class
-
+template <typename T>
 void LatinSquare<T>::solve(std::set<T>& contents){
 	solveHelp(contents, 0, 0);
 }
@@ -156,7 +156,7 @@ void LatinSquare<T>::solve(std::set<T>& contents){
 * Recursive, backtracking, helper for solving the Latin square
 * attempts to find a value for square[row][col], then call solveHelp for the next space in the square
 */
-
+template <typename T>
 bool LatinSquare<T>::solveHelp(std::set<T>& contents, int row, int col){
 	//check if it's necessary to wrap down to the next row
 	if(col >= n){
@@ -209,7 +209,7 @@ bool LatinSquare<T>::solveHelp(std::set<T>& contents, int row, int col){
 
 
 //compares square[row][col] to values at square[row][c] where c < col and square[r][col] where r < row.
-
+template <typename T>
 bool LatinSquare<T>::isNewValid(unsigned row, unsigned col){
 	bool row_is_valid = true;
 	bool col_is_valid = true;
@@ -237,7 +237,7 @@ bool LatinSquare<T>::isNewValid(unsigned row, unsigned col){
 }
 
 //checks the validity of the entire Latin Square (assumes all values have been initialized)
-
+template <typename T>
 bool LatinSquare<T>::isValid(){
 	//generate a set of elements for this row/col, which will check for repeated items
 	std::set<T> seen_before;
@@ -286,7 +286,7 @@ bool LatinSquare<T>::isValid(){
 }
 
 //NTS: CONSIDER ADDING FORMATTED OUTPUT
-
+template <typename T>
 void LatinSquare<T>::print(std::ostream outstream){
 	outstream<<n<<" x "<<n<<" Latin Square" << std::endl;
     outstream << std::setw(4) << " ";
@@ -315,7 +315,7 @@ void LatinSquare<T>::print(std::ostream outstream){
 }
 
 /*
-
+template <typename T>
 ostream& operator<<(ostream& outstream, LatinSquare<T> lsquare){
 	lsquare.print(outstream);
 	return outstream;
