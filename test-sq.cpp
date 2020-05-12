@@ -1,6 +1,7 @@
 #include "latinsquare.h"
 #include <set>
 #include <string>
+#include <iostream>
 /* NTS: EDGE CASES TO CHECK:
 * -Excessively large contents set
 * -Too small contents set

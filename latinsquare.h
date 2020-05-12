@@ -2,6 +2,7 @@
 #define LATINSQUARE_H
 #include <set>
 #include <exception>
+#include <iostream>
 
 //NTS: See if this can work with a class that doesn't support << if I don't call print()
 //NTS: Consider adding "reduced" bool to constructor for additional constraints
