@@ -131,7 +131,7 @@ template <typename T>
 LatinSquare<T>::LatinSquare(unsigned n_dimension, std::set<T>& contents){
 	//handle zero case
 	if(n == 0){
-		throw std::logic_error("Cannot construct a Latin square of size 0.")
+		throw std::logic_error("Cannot construct a Latin square of size 0.");
 	}
 	//handle cases where cotents is smaller than n
 	if(contents.size() < n){
@@ -182,7 +182,7 @@ bool LatinSquare<T>::solveHelp(std::set<T>& contents, int row, int col){
 	int num_tried = 0;
 
 	//iterate through set, seeing if each assignment is valid, and recursing to solve the next space if so
-	for(std::set<T>::iterator it = contents.begin();
+	for(typename std::set<T>::iterator it = contents.begin();
 		it != contents.end();
 		++it){
 
