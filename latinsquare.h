@@ -37,7 +37,7 @@ public:
 	void print(std::ostream outstream);
 
 	//overload for the extraction operator, T must support the << operator
-	friend ostream& operator<<(ostream& outstream);
+	friend std::ostream& operator<<(ostream& outstream);
 
 private:
 
@@ -76,7 +76,7 @@ private:
 */
 //NTS: THIS MAY CAUSE MEMORY ALLOCATION ISSUES???
 template <typename T>
-LatinSquare::LatinSquare(unsigned n_dimension) : n(n_dimension){
+LatinSquare<T>::LatinSquare(unsigned n_dimension) : n(n_dimension){
 	//aquire space for the square
 
 	//allocate the first column
@@ -99,7 +99,7 @@ LatinSquare::LatinSquare(unsigned n_dimension) : n(n_dimension){
 
 //LatinSquare destructor
 template <typename T>
-LatinSquare::~LatinSquare(){
+LatinSquare<T>::~LatinSquare(){
 
 	//deallocate square grid
 
@@ -119,7 +119,7 @@ LatinSquare::~LatinSquare(){
 */
 //NTS: THIS MAY CAUSE MEMORY ALLOCATION ISSUES???
 template <typename T>
-LatinSquare::LatinSquare(unsigned n_dimension, std::set<T>& contents){
+LatinSquare<T>::LatinSquare(unsigned n_dimension, std::set<T>& contents){
 	//handle zero case
 	if(n == 0){
 		throw std::logic_error("Cannot construct a Latin square of size 0.")
@@ -144,7 +144,7 @@ LatinSquare::LatinSquare(unsigned n_dimension, std::set<T>& contents){
 
 //NTS: Probably just have to overload this if making a reduced class
 template <typename T>
-void LatinSquare::solve(std::set<T>& contents){
+void LatinSquare<T>::solve(std::set<T>& contents){
 	solveHelp(contents, 0, 0);
 }
 
@@ -153,7 +153,7 @@ void LatinSquare::solve(std::set<T>& contents){
 * attempts to find a value for square[row][col], then call solveHelp for the next space in the square
 */
 template <typename T>
-bool LatinSquare::solveHelp(std::set<T>& contents, int row, int col){
+bool LatinSquare<T>::solveHelp(std::set<T>& contents, int row, int col){
 	//check if it's necessary to wrap down to the next row
 	if(col >= n){
 		col = 0;
@@ -206,7 +206,7 @@ bool LatinSquare::solveHelp(std::set<T>& contents, int row, int col){
 
 //compares square[row][col] to values at square[row][c] where c < col and square[r][col] where r < row.
 template <typename T>
-bool LatinSquare::isNewValid(unsigned row, unsigned col){
+bool LatinSquare<T>::isNewValid(unsigned row, unsigned col){
 	bool row_is_valid = true;
 	bool col_is_valid = true;
 
@@ -234,7 +234,7 @@ bool LatinSquare::isNewValid(unsigned row, unsigned col){
 
 //checks the validity of the entire Latin Square (assumes all values have been initialized)
 template <typename T>
-bool LatinSquare::isValid(){
+bool LatinSquare<T>::isValid(){
 	//generate a set of elements for this row/col, which will check for repeated items
 	std::set<T> seen_before;
 
@@ -283,7 +283,7 @@ bool LatinSquare::isValid(){
 
 //NTS: CONSIDER ADDING FORMATTED OUTPUT
 template <typename T>
-void LatinSquare::print(std::ostream outstream){
+void LatinSquare<T>::print(std::ostream outstream){
 	outstream<<n<<" x "<<n<<" Latin Square" << std::endl;
     outstream << std::setw(4) << " ";
 
