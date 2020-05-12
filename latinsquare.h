@@ -23,11 +23,11 @@ class LatinSquare{
 public:
 	//constructor for defualt integer Latin square (no need to pass in a set of contents)
 	//Note: only call this constructor if the LatinSquare instance has been templated as <int>
-	LatinSquare(size_t n_dimension);
+	LatinSquare(unsigned n_dimension);
 
 	//constructor for the templated Latin square. Set contents should contain at least n
 	//distinct Ts
-	LatinSquare(size_t n_dimension, std::set<T>& contents);
+	LatinSquare(unsigned n_dimension, std::set<T>& contents);
 
 	//destructor
 	~LatinSquare();
@@ -51,7 +51,7 @@ private:
 	*
 	* If you desire to evaluate the validity of the entire grid, use isValid()
 	*/
-	bool isNewValid(size_t row, size_t col);
+	bool isNewValid(unsigned row, unsigned col);
 
 	/*
 	* Checks the validity of the entire Latin square
@@ -60,7 +60,7 @@ private:
 	bool isValid();
 
 	//Stores the dimensions of the n x n Latin square
-	size_t n;
+	unsigned n;
 
 	//2D array which stores Ts
 	T** square;
@@ -75,14 +75,14 @@ private:
 */
 //NTS: THIS MAY CAUSE MEMORY ALLOCATION ISSUES???
 template <typename T>
-LatinSquare::LatinSquare(size_t n_dimension) : n(n_dimension){
+LatinSquare::LatinSquare(unsigned n_dimension) : n(n_dimension){
 	//aquire space for the square
 
 	//allocate the first column
 	square = new T*[n];
 
 	//allocate the rows
-	for(size_t i = 0; i < n; i++){
+	for(unsigned i = 0; i < n; i++){
 		square[i] = new T[n];
 	}
 
@@ -102,7 +102,7 @@ LatinSquare::~LatinSquare(){
 
 	//deallocate square grid
 
-	for(size_t i = 0; i < n; i++){
+	for(unsigned i = 0; i < n; i++){
 		delete [] square[i];
 	}
 
@@ -118,7 +118,7 @@ LatinSquare::~LatinSquare(){
 */
 //NTS: THIS MAY CAUSE MEMORY ALLOCATION ISSUES???
 template <typename T>
-LatinSquare::LatinSquare(size_t n_dimension, std::set<T>& contents){
+LatinSquare::LatinSquare(unsigned n_dimension, std::set<T>& contents){
 	//handle zero case
 	if(n == 0){
 		throw std::logic_error("Cannot construct a Latin square of size 0.")
@@ -133,7 +133,7 @@ LatinSquare::LatinSquare(size_t n_dimension, std::set<T>& contents){
 	square = new T*[n];
 
 	//allocate the rows
-	for(size_t i = 0; i < n; i++){
+	for(unsigned i = 0; i < n; i++){
 		square[i] = new T[n];
 	}
 
@@ -166,8 +166,8 @@ bool LatinSquare::solveHelp(std::set<T>& contents, int row, int col){
 	}
 
 	/*
-	/* num_tried tracks the number of values tried, so we can break early if contents.size > n, 
-	/* but still want to maintain efficient iteration through the set 
+	* num_tried tracks the number of values tried, so we can break early if contents.size > n, 
+	* but still want to maintain efficient iteration through the set 
 	*/
 	int num_tried = 0;
 
@@ -205,12 +205,12 @@ bool LatinSquare::solveHelp(std::set<T>& contents, int row, int col){
 
 //compares square[row][col] to values at square[row][c] where c < col and square[r][col] where r < row.
 template <typename T>
-bool LatinSquare::isNewValid(size_t row, size_t col){
+bool LatinSquare::isNewValid(unsigned row, unsigned col){
 	bool row_is_valid = true;
 	bool col_is_valid = true;
 
 	//check row validity
-	for(size_t r = row-1; r >= 0; r-=1){
+	for(unsigned r = row-1; r >= 0; r-=1){
 		//immediately return false if distinctness requriement is violated
 		if(square[r][col] == square[row][col]){
 			row_is_valid = false;
@@ -219,7 +219,7 @@ bool LatinSquare::isNewValid(size_t row, size_t col){
 	}
 
 	//checl column validity
-	for(size_t c = col-1; c >= 0; c-=1){
+	for(unsigned c = col-1; c >= 0; c-=1){
 		//immediately return false if distinctness requriement is violated
 		if(square[row][c] == square[row][col]){
 			col_is_valid = false;
@@ -238,8 +238,8 @@ bool LatinSquare::isValid(){
 	std::set<T> seen_before;
 
 	//check that row elements are distinct within their row
-	for(size_t r = 0; r < n; r++){
-		for(size_t c = 0; c < n; c++){
+	for(unsigned r = 0; r < n; r++){
+		for(unsigned c = 0; c < n; c++){
 
 			//if we haven't seen it before, add it to the set becuase we have noe
 			if(seen_before.find(square[r][c]) == seen_before.end()){
@@ -256,8 +256,8 @@ bool LatinSquare::isValid(){
 	}
 
 	//now check for distinctness in columns
-	for(size_t c = 0; c < n; c++){
-		for(size_t r = 0; r < n; r++){
+	for(unsigned c = 0; c < n; c++){
+		for(unsigned r = 0; r < n; r++){
 
 			//if we haven't seen it before, add it to the set becuase we have noe
 			if(seen_before.find(square[r][c]) == seen_before.end()){
@@ -288,17 +288,17 @@ void LatinSquare::print(std::ostream outstream){
 
     outstream << std::endl;
     outstream << "    ";
-    for(size_t cidx = 0; cidx < n; cidx++) {
+    for(unsigned cidx = 0; cidx < n; cidx++) {
         outstream <<  std::setw(4) << "====="  << "=====";
     }
     outstream << std::endl;
 
     // Start printing square data
-    for(size_t ridx = 0; ridx < n; ridx++) {
+    for(unsigned ridx = 0; ridx < n; ridx++) {
         // Print border
         outstream << std::setw(2) << " |";
         // Print values
-        for(size_t cidx = 0; cidx < n; cidx++) {
+        for(unsigned cidx = 0; cidx < n; cidx++) {
             outstream << std::setw(4) << " ";
            
             outstream << std::setw(4) << square[ridx][cidx];
