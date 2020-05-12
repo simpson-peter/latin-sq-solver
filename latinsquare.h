@@ -179,7 +179,7 @@ bool LatinSquare<T>::solveHelp(std::set<T>& contents, unsigned row, unsigned col
 	* num_tried tracks the number of values tried, so we can break early if contents.size > n, 
 	* but still want to maintain efficient iteration through the set 
 	*/
-	int num_tried = 0;
+	unsigned num_tried = 0;
 
 	//iterate through set, seeing if each assignment is valid, and recursing to solve the next space if so
 	for(typename std::set<T>::iterator it = contents.begin();
