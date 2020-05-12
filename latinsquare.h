@@ -38,7 +38,7 @@ public:
 	void print(std::ostream outstream);
 
 	//overload for the extraction operator, T must support the << operator
-	friend std::ostream& operator<<(ostream& outstream);
+	//friend std::ostream& operator<<(ostream& outstream);
 
 private:
 
@@ -314,10 +314,12 @@ void LatinSquare<T>::print(std::ostream outstream){
 
 }
 
+/*
 template <typename T>
 ostream& operator<<(ostream& outstream, LatinSquare<T> lsquare){
 	lsquare.print(outstream);
 	return outstream;
 }
+*/
 
 #endif
