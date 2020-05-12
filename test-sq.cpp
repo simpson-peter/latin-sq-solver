@@ -9,7 +9,7 @@
 * -Non-int LSqaure made with the minimal constructor
 */
 int main(int argc, char* argv[]){
-	std::set<int> int_contents();
+	std::set<int> int_contents;
 	int_contents.insert(0);
 	int_contents.insert(1);
 	int_contents.insert(2);
