@@ -128,7 +128,7 @@ LatinSquare<T>::~LatinSquare(){
 */
 //NTS: THIS MAY CAUSE MEMORY ALLOCATION ISSUES???
 template <typename T>
-LatinSquare<T>::LatinSquare(unsigned n_dimension, std::set<T>& contents){
+LatinSquare<T>::LatinSquare(unsigned n_dimension, std::set<T>& contents) : n(n_dimension) {
 	//handle zero case
 	if(n == 0){
 		throw std::logic_error("Cannot construct a Latin square of size 0.");
