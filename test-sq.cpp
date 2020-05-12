@@ -17,7 +17,7 @@ int main(int argc, char* argv[]){
 	lsqaure_int.print();
 
 	std::cout<<"Alternate Print Method for First Latin Square: "<<std::endl;
-	std::cout<<lsqaure_int<<std::endl;
+	//std::cout<<lsqaure_int<<std::endl;
 
 	//create a contents for a hex-dec Latin Square
 	std::set<std::string> hex_colors;
