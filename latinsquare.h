@@ -3,7 +3,6 @@
 #include <set>
 #include <exception>
 
-//NTS: WOULD BE COOL TO MAKE A VISUAL REPRESENTATION OF ONE OF THE SQUARES USING HEX
 //NTS: See if this can work with a class that doesn't support << if I don't call print()
 //NTS: Consider adding "reduced" bool to constructor for additional constraints
 //NTS: Make sure weird stuff doesn't happen with dynamic allocation and elements passed in the set
