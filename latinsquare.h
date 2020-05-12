@@ -37,7 +37,7 @@ public:
 	~LatinSquare();
 
 	//Prints the square to provided ostream (T must support the << operator)
-	void print(std::ostream outstream);
+	void print(std::ostream& outstream);
 
 	//overload for the extraction operator, T must support the << operator
 	//friend std::ostream& operator<<(ostream& outstream);
@@ -292,7 +292,7 @@ bool LatinSquare<T>::isValid(){
 
 //NTS: CONSIDER ADDING FORMATTED OUTPUT
 template <typename T>
-void LatinSquare<T>::print(std::ostream outstream){
+void LatinSquare<T>::print(std::ostream& outstream){
 	outstream<<n<<" x "<<n<<" Latin Square" << std::endl;
     outstream << std::setw(4) << " ";
 
