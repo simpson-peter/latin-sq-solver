@@ -80,7 +80,9 @@ private:
 * Will attempt to create a std::set of Ts by assigning them numeric values
 * and then call solve() to populate the square.
 */
+
 //NTS: THIS MAY CAUSE MEMORY ALLOCATION ISSUES???
+/*
 template <typename T>
 LatinSquare<T>::LatinSquare(unsigned n_dimension) : n(n_dimension){
 	//aquire space for the square
@@ -102,7 +104,7 @@ LatinSquare<T>::LatinSquare(unsigned n_dimension) : n(n_dimension){
 	//create the contents set 
 	solve(contents);
 }
-
+*/
 
 //LatinSquare destructor
 template <typename T>
