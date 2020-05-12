@@ -3,7 +3,8 @@
 #include <set>
 #include <exception>
 #include <iostream>
-
+//NTS: REMOVE BELOW IF I DONT END UP NEEDING SETW
+#include <iomanip>
 //NTS: See if this can work with a class that doesn't support << if I don't call print()
 //NTS: Consider adding "reduced" bool to constructor for additional constraints
 //NTS: Make sure weird stuff doesn't happen with dynamic allocation and elements passed in the set
