@@ -56,7 +56,7 @@ private:
 	bool isNewValid(unsigned row, unsigned col);
 
 	//recursive back-tracking helper function for solve(), performs most of the work in solving
-	bool solveHelp(std::set<T>& contents, int row, int col){
+	bool solveHelp(std::set<T>& contents, int row, int col);
 
 	/*
 	* Checks the validity of the entire Latin square
