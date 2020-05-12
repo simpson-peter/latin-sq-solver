@@ -9,12 +9,12 @@
 * -Non-int LSqaure made with the minimal constructor
 */
 int main(int argc, char* argv[]){
-
+	std::set<int> int_contents(0, )
 	//constructs a 9 x 9 Latin Square with integers
 	LatinSquare<int> lsqaure_int(9); 
 
 	std::cout<<"The First Latin Square: "<<std::endl;
-	lsqaure_int.print();
+	lsqaure_int.print(std::cout);
 
 	std::cout<<"Alternate Print Method for First Latin Square: "<<std::endl;
 	//std::cout<<lsqaure_int<<std::endl;
@@ -32,7 +32,7 @@ int main(int argc, char* argv[]){
 	LatinSquare<std::string> lsqaure_hex(hex_colors.size(), hex_colors);
 
 	std::cout<<"The Second Latin Square: "<<std::endl;
-	lsqaure_hex.print();
+	lsqaure_hex.print(std::cout);
 
 	return 0;
 }
