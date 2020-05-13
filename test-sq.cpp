@@ -8,6 +8,7 @@
 * -Too small contents set
 * -Unordered int contents passed in
 * -Non-int LSqaure made with the minimal constructor
+* -See if this can work with a class that doesn't support << if I don't call print()
 */
 int main(int argc, char* argv[]){
 	std::set<int> int_contents;

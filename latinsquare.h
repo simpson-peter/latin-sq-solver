@@ -3,13 +3,15 @@
 #include <set>
 #include <exception>
 #include <iostream>
-//NTS: REMOVE BELOW IF I DONT END UP NEEDING SETW
 #include <iomanip>
-//NTS: See if this can work with a class that doesn't support << if I don't call print()
-//NTS: Consider adding "reduced" bool to constructor for additional constraints
-//NTS: Make sure weird stuff doesn't happen with dynamic allocation and elements passed in the set
-//(should I be allocating them here???, Does the type need to support the assignment/copy constructor???)
-//NTS: CONSIDER ADDING RUNTIME ANALYSIS
+
+/*
+* To-Add:
+* Assignment Operator
+* "Reduced" bool option
+* Default fill for int case
+* Runtime Analysis
+*/
 
 /*
 * Definition for the LatinSquare class, which represents an n x n grid
@@ -38,7 +40,7 @@ public:
 
 	//overload for the extraction operator, T must support the << operator
 	template <typename In>
-	friend std::ostream& operator<<(std::ostream& outstream, LatinSquare<In> lsquare);
+	friend std::ostream& operator<<(std::ostream& outstream, LatinSquare<In>& lsquare);
 
 private:
 
@@ -280,7 +282,7 @@ void LatinSquare<T>::print(std::ostream& outstream){
 }
 
 template <typename In>
-std::ostream& operator<<(std::ostream& outstream, LatinSquare<In> lsquare){
+std::ostream& operator<<(std::ostream& outstream, LatinSquare<In>& lsquare){
 
 	outstream<<lsquare.n<<" x "<<lsquare.n<<" Latin Square" << std::endl;
 
