@@ -281,15 +281,15 @@ void LatinSquare<T>::print(std::ostream& outstream){
 template <typename T>
 std::ostream& operator<<(std::ostream& outstream, LatinSquare<T> lsquare){
 
-	outstream<<lsquare::n<<" x "<<lsquare::n<<" Latin Square" << std::endl;
+	outstream<<lsquare.n<<" x "<<lsquare.n<<" Latin Square" << std::endl;
 
     // Start printing square data
-    for(unsigned ridx = 0; ridx < lsquare::n; ridx++) {
+    for(unsigned ridx = 0; ridx < lsquare.n; ridx++) {
         // Print values
-        for(unsigned cidx = 0; cidx < lsquare::n; cidx++) {
+        for(unsigned cidx = 0; cidx < lsquare.n; cidx++) {
             outstream << std::setw(4) << " ";
            
-            outstream << std::setw(4) << lsquare::square[ridx][cidx];
+            outstream << std::setw(4) << lsquare.square[ridx][cidx];
         }
         outstream << std::endl;
     } 
