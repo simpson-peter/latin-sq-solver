@@ -55,7 +55,7 @@ private:
 	*
 	* If you desire to evaluate the validity of the entire grid, use isValid()
 	*/
-	bool isNewValid(unsigned row, unsigned col);
+	bool isNewValid(unsigned row_in, unsigned col_in);
 
 	//recursive back-tracking helper function for solve(), performs most of the work in solving
 	bool solveHelp(std::set<T>& contents, unsigned row, unsigned col);
@@ -215,29 +215,30 @@ bool LatinSquare<T>::solveHelp(std::set<T>& contents, unsigned row, unsigned col
 
 //compares square[row][col] to values at square[row][c] where c < col and square[r][col] where r < row.
 template <typename T>
-bool LatinSquare<T>::isNewValid(unsigned row, unsigned col){
+bool LatinSquare<T>::isNewValid(unsigned row_in, unsigned col_in){
+	//Convert to ints to avoid overflow issues
+
+	int row = (int) row_in;
+	int col = (int) col_in;
+
 	bool row_is_valid = true;
 	bool col_is_valid = true;
 
 	//check row validity
-	if(row != 0){
-		for(unsigned r = row-1; r >= 0; r-=1){
-			//immediately return false if distinctness requriement is violated
-			if(square[r][col] == square[row][col]){
-				row_is_valid = false;
-				return row_is_valid;
-			}
+	for(unsigned r = row-1; r >= 0; r-=1){
+		//immediately return false if distinctness requriement is violated
+		if(square[r][col] == square[row][col]){
+			row_is_valid = false;
+			return row_is_valid;
 		}
 	}
 
 	//checl column validity
-	if(col != 0){
-		for(unsigned c = col-1; c >= 0; c-=1){
-			//immediately return false if distinctness requriement is violated
-			if(square[row][c] == square[row][col]){
-				col_is_valid = false;
-				return col_is_valid;
-			}
+	for(unsigned c = col-1; c >= 0; c-=1){
+		//immediately return false if distinctness requriement is violated
+		if(square[row][c] == square[row][col]){
+			col_is_valid = false;
+			return col_is_valid;
 		}
 	}
 
