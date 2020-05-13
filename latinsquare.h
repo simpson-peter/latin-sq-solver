@@ -314,7 +314,7 @@ void LatinSquare<T>::print(std::ostream& outstream){
 }
 
 template <typename T>
-ostream& operator<<(ostream& outstream, LatinSquare<T> lsquare){
+std::ostream& operator<<(std::ostream& outstream, LatinSquare<T> lsquare){
 	lsquare.print(outstream);
 	return outstream;
 }
