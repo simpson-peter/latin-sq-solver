@@ -23,14 +23,11 @@
 template <typename T>
 class LatinSquare{
 public:
-	/*
-	//constructor for defualt integer Latin square (no need to pass in a set of contents)
-	//Note: only call this constructor if the LatinSquare instance has been templated as <int>
-	LatinSquare(unsigned n_dimension);
-	*/
 
-	//constructor for the templated Latin square. Set contents should contain at least n
-	//distinct Ts
+	/*
+	*constructor for the templated Latin square. Set contents should contain at least n
+	*distinct Ts
+	*/
 	LatinSquare(unsigned n_dimension, std::set<T>& contents);
 
 	//destructor
@@ -72,39 +69,6 @@ private:
 	//2D array which stores Ts
 	T** square;
 };
-
-/*
-* NOTE: THIS CONSTRUCTOR IS INTENDED FOR USE WITH INTEGERS.
-*
-* Constructor which does not require a set of contents.
-* Will attempt to create a std::set of Ts by assigning them numeric values
-* and then call solve() to populate the square.
-*/
-
-//NTS: THIS MAY CAUSE MEMORY ALLOCATION ISSUES???
-/*
-template <typename T>
-LatinSquare<T>::LatinSquare(unsigned n_dimension) : n(n_dimension){
-	//aquire space for the square
-
-	//allocate the first column
-	square = new T*[n];
-
-	//allocate the rows
-	for(unsigned i = 0; i < n; i++){
-		square[i] = new T[n];
-	}
-
-	//create the contents set, and initialize it
-	std::set<T> contents;
-	for(typename T q = 0; q < n; q++){
-		contents.insert(q);
-	}
-
-	//create the contents set 
-	solve(contents);
-}
-*/
 
 //LatinSquare destructor
 template <typename T>
@@ -314,7 +278,7 @@ void LatinSquare<T>::print(std::ostream& outstream){
 }
 
 template <typename T>
-std::ostream& operator<<(std::ostream& outstream, LatinSquare<T> lsquare){
+std::ostream& operator<<(std::ostream& outstream){
 	lsquare.print(outstream);
 	return outstream;
 }
