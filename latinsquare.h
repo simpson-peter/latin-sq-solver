@@ -220,7 +220,7 @@ bool LatinSquare<T>::isNewValid(unsigned row, unsigned col){
 	bool col_is_valid = true;
 
 	//check row validity
-	if(row != 0){}
+	if(row != 0){
 		for(unsigned r = row-1; r >= 0; r-=1){
 			//immediately return false if distinctness requriement is violated
 			if(square[r][col] == square[row][col]){
