@@ -216,7 +216,7 @@ bool LatinSquare<T>::solveHelp(std::set<T>& contents, unsigned row, unsigned col
 //compares square[row][col] to values at square[row][c] where c < col and square[r][col] where r < row.
 template <typename T>
 bool LatinSquare<T>::isNewValid(unsigned row_in, unsigned col_in){
-	
+
 	//Convert to ints to avoid overflow issues
 	int row = (int) row_in;
 	int col = (int) col_in;
@@ -299,37 +299,25 @@ bool LatinSquare<T>::isValid(){
 template <typename T>
 void LatinSquare<T>::print(std::ostream& outstream){
 	outstream<<n<<" x "<<n<<" Latin Square" << std::endl;
-    outstream << std::setw(4) << " ";
-
-    outstream << std::endl;
-    outstream << "    ";
-    for(unsigned cidx = 0; cidx < n; cidx++) {
-        outstream <<  std::setw(4) << "====="  << "=====";
-    }
-    outstream << std::endl;
 
     // Start printing square data
     for(unsigned ridx = 0; ridx < n; ridx++) {
-        // Print border
-        outstream << std::setw(2) << " |";
         // Print values
         for(unsigned cidx = 0; cidx < n; cidx++) {
             outstream << std::setw(4) << " ";
            
             outstream << std::setw(4) << square[ridx][cidx];
         }
-        outstream <<  "   |";
         outstream << std::endl;
     }
 
 }
 
-/*
 template <typename T>
 ostream& operator<<(ostream& outstream, LatinSquare<T> lsquare){
 	lsquare.print(outstream);
 	return outstream;
 }
-*/
+
 
 #endif

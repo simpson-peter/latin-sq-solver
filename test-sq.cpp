@@ -19,7 +19,7 @@ int main(int argc, char* argv[]){
 	std::cout<<"The First Latin Square: "<<std::endl;
 	lsqaure_int.print(std::cout);
 
-	std::cout<<"Alternate Print Method for First Latin Square: "<<std::endl;
+	//std::cout<<"Alternate Print Method for First Latin Square: "<<std::endl;
 	//std::cout<<lsqaure_int<<std::endl;
 
 	//create a contents for a hex-dec Latin Square
