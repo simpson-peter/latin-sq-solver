@@ -13,14 +13,14 @@ int main(int argc, char* argv[]){
 	int_contents.insert(0);
 	int_contents.insert(1);
 	int_contents.insert(2);
-	//constructs a 9 x 9 Latin Square with integers
+	//constructs a 3 x 3 Latin Square with integers
 	LatinSquare<int> lsqaure_int(3, int_contents); 
 
 	std::cout<<"The First Latin Square: "<<std::endl;
 	lsqaure_int.print(std::cout);
 
-	//std::cout<<"Alternate Print Method for First Latin Square: "<<std::endl;
-	//std::cout<<lsqaure_int<<std::endl;
+	std::cout<<"Alternate Print Method for First Latin Square: "<<std::endl;
+	std::cout<<lsqaure_int<<std::endl;
 
 	//create a contents for a hex-dec Latin Square
 	std::set<std::string> hex_colors;
