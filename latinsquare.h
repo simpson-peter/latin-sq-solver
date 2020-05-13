@@ -37,7 +37,7 @@ public:
 	void print(std::ostream& outstream);
 
 	//overload for the extraction operator, T must support the << operator
-	//friend std::ostream& operator<<(ostream& outstream);
+	friend std::ostream& operator<<(std::ostream& outstream, LatinSquare<T> lsquare);
 
 private:
 
@@ -280,7 +280,20 @@ void LatinSquare<T>::print(std::ostream& outstream){
 
 template <typename T>
 std::ostream& operator<<(std::ostream& outstream, LatinSquare<T> lsquare){
-	lsquare.print(outstream);
+
+	outstream<<n<<" x "<<n<<" Latin Square" << std::endl;
+
+    // Start printing square data
+    for(unsigned ridx = 0; ridx < n; ridx++) {
+        // Print values
+        for(unsigned cidx = 0; cidx < n; cidx++) {
+            outstream << std::setw(4) << " ";
+           
+            outstream << std::setw(4) << square[ridx][cidx];
+        }
+        outstream << std::endl;
+    } 
+
 	return outstream;
 }
 
