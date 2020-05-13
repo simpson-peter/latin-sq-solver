@@ -101,6 +101,7 @@ LatinSquare<T>::LatinSquare(unsigned n_dimension, std::set<T>& contents) : n(n_d
 	if(contents.size() < n){
 		throw std::runtime_error("Size of set contents cannot be less than n.");
 	}
+
 	//aquire space for the square
 
 	//allocate the first column
@@ -278,7 +279,7 @@ void LatinSquare<T>::print(std::ostream& outstream){
 }
 
 template <typename T>
-std::ostream& operator<<(std::ostream& outstream){
+std::ostream& operator<<(std::ostream& outstream, LatinSquare<T> lsquare){
 	lsquare.print(outstream);
 	return outstream;
 }
