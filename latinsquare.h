@@ -216,8 +216,8 @@ bool LatinSquare<T>::solveHelp(std::set<T>& contents, unsigned row, unsigned col
 //compares square[row][col] to values at square[row][c] where c < col and square[r][col] where r < row.
 template <typename T>
 bool LatinSquare<T>::isNewValid(unsigned row_in, unsigned col_in){
+	
 	//Convert to ints to avoid overflow issues
-
 	int row = (int) row_in;
 	int col = (int) col_in;
 
@@ -225,7 +225,7 @@ bool LatinSquare<T>::isNewValid(unsigned row_in, unsigned col_in){
 	bool col_is_valid = true;
 
 	//check row validity
-	for(unsigned r = row-1; r >= 0; r-=1){
+	for(int r = row-1; r >= 0; r-=1){
 		//immediately return false if distinctness requriement is violated
 		if(square[r][col] == square[row][col]){
 			row_is_valid = false;
@@ -234,7 +234,7 @@ bool LatinSquare<T>::isNewValid(unsigned row_in, unsigned col_in){
 	}
 
 	//checl column validity
-	for(unsigned c = col-1; c >= 0; c-=1){
+	for(int c = col-1; c >= 0; c-=1){
 		//immediately return false if distinctness requriement is violated
 		if(square[row][c] == square[row][col]){
 			col_is_valid = false;
