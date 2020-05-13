@@ -278,8 +278,8 @@ void LatinSquare<T>::print(std::ostream& outstream){
 
 }
 
-//template <typename T>
-std::ostream& operator<<(std::ostream& outstream, LatinSquare lsquare){
+template <typename In>
+std::ostream& operator<<(std::ostream& outstream, LatinSquare<In> lsquare){
 
 	outstream<<lsquare.n<<" x "<<lsquare.n<<" Latin Square" << std::endl;
 
