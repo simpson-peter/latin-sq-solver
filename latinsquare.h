@@ -138,7 +138,7 @@ bool LatinSquare<T>::solveHelp(std::set<T>& contents, unsigned row, unsigned col
 		row += 1;
 	}
 
-	//check if we've filled the entire square, check validity if so
+	//if we've reached past the bounds of the square, everything else has checked out!
 	if(row >= n){
 		return true;
 	}
