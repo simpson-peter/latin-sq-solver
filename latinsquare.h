@@ -11,6 +11,7 @@
 * "Reduced" bool option
 * Default fill for int case
 * Runtime Analysis
+* Add a const constructor
 */
 
 /*
@@ -138,9 +139,8 @@ bool LatinSquare<T>::solveHelp(std::set<T>& contents, unsigned row, unsigned col
 	}
 
 	//check if we've filled the entire square, check validity if so
-	//NTS: THIS IS PROBABLY AN UNECESSARY STEP (probably could just return true since we've gone off the map)
 	if(row >= n){
-		return isValid();
+		return true;
 	}
 
 	/*
