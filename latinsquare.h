@@ -18,7 +18,6 @@
 * "Reduced" bool option
 * Default fill for int case
 * Runtime Analysis
-* Add a const constructor
 */
 
 /*
