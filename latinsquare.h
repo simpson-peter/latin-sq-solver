@@ -8,12 +8,18 @@
 //NTS: Make sure asssignment doesn't cause memory loss issues.
 
 /*
+* To-Do:
+* Test assignment operator, make sure it doesn't cause memory leak issues
+*
+*/
+
+/*
 * To-Add:
-* Assignment Operator
 * "Reduced" bool option
 * Default fill for int case
 * Runtime Analysis
 * Add a const constructor
+* copy contstructor
 */
 
 /*
@@ -35,6 +41,9 @@ public:
 	*distinct Ts
 	*/
 	LatinSquare(unsigned n_dimension, std::set<T>& contents);
+
+	//copy constructor
+	LatinSquare(const LatinSquare<T>& toCopy);
 
 	//destructor
 	~LatinSquare();
@@ -99,7 +108,6 @@ LatinSquare<T>::~LatinSquare(){
 * Will attempt to create a std::set of Ts by assigning them numeric values
 * and then call solve() to populate the square.
 */
-//NTS: THIS MAY CAUSE MEMORY ALLOCATION ISSUES???
 template <typename T>
 LatinSquare<T>::LatinSquare(unsigned n_dimension, std::set<T>& contents) : n(n_dimension) {
 	//handle zero case
@@ -125,10 +133,33 @@ LatinSquare<T>::LatinSquare(unsigned n_dimension, std::set<T>& contents) : n(n_d
 	solve(contents);
 }
 
+/*
+* copy constructor implementation
+* assumes toCopy is already solved given that solve is called on construction
+*/
+LatinSquare<T>::LatinSquare(const LatinSquare<T>& toCopy) : this.n(toCopy.n){
+
+	//aquire space for this' square
+	//allocate the first column
+	this.square = new T*[n];
+
+	//allocate the rows
+	for(unsigned i = 0; i < this.n; i++){
+		this.square[i] = new T[n];
+	}
+
+	//copy toCopy's contents to this'
+	for(unsigned r = 0; r < this.n; r++){
+		for(unsigned c = 0; c < this.n; c++){
+			this.square[r][c] = toCopy.square[r][c];
+		}
+	}
+
+}
 
 //assignment operator implementation
 template <typename T>
-typename LatinSquare<T>& LatinSquare<T>::operator=(const LatinSquare<T>& rhs){
+LatinSquare<T>& LatinSquare<T>::operator=(const LatinSquare<T>& rhs){
 
 	//if rhs' dimensions does not equal this', we must reallocate this' square array
 	if(rhs.n != this.n){
