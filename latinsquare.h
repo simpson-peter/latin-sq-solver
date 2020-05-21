@@ -5,6 +5,8 @@
 #include <iostream>
 #include <iomanip>
 
+//NTS: Make sure asssignment doesn't cause memory loss issues.
+
 /*
 * To-Add:
 * Assignment Operator
@@ -25,6 +27,7 @@
 */
 template <typename T>
 class LatinSquare{
+
 public:
 
 	/*
@@ -42,6 +45,9 @@ public:
 	//overload for the extraction operator, T must support the << operator
 	template <typename In>
 	friend std::ostream& operator<<(std::ostream& outstream, LatinSquare<In>& lsquare);
+
+	//overloads assignment for a deep copy of rhs' square array
+	LatinSquare& operator=(const LatinSquare& rhs);
 
 private:
 
@@ -87,7 +93,6 @@ LatinSquare<T>::~LatinSquare(){
 	delete [] square;
 }
 
-
 /*
 *
 * Constructor which recieves a set of contents, which must have at least n members
@@ -118,6 +123,40 @@ LatinSquare<T>::LatinSquare(unsigned n_dimension, std::set<T>& contents) : n(n_d
 
 	//create the contents set 
 	solve(contents);
+}
+
+
+//assignment operator implementation
+template <typename T>
+typename LatinSquare<T>& LatinSquare<T>::operator=(const LatinSquare<T>& rhs){
+
+	//if rhs' dimensions does not equal this', we must reallocate this' square array
+	if(rhs.n != this.n){
+
+		//deallocate this' square
+		for(unsigned i = 0; i < this.n; i++){
+			delete [] this.square[i];
+		}
+
+		delete [] this.square;
+
+		this.n = rhs.n;
+
+		//allocate a new square for this with rhs' dimensions
+		this.square = new T*[rhs.n];
+
+		//allocate the rows
+		for(unsigned i = 0; i < rhs.n; i++){
+			this.square[i] = new T[rhs.n];
+		}
+	}
+
+	//copy rhs' contents into this'
+	for(unsigned r = 0; r < this.n; r++){
+		for(unsigned c = 0; c < this.n; c++){
+			this.square[r][c] = rhs.square[r][c];
+		}
+	}
 }
 
 //NTS: Probably just have to overload this if making a reduced class
