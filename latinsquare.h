@@ -10,7 +10,7 @@
 /*
 * To-Do:
 * Test assignment operator, make sure it doesn't cause memory leak issues
-*
+* Test copy constructor
 */
 
 /*
@@ -19,7 +19,6 @@
 * Default fill for int case
 * Runtime Analysis
 * Add a const constructor
-* copy contstructor
 */
 
 /*
