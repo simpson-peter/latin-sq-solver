@@ -135,6 +135,7 @@ LatinSquare<T>::LatinSquare(unsigned n_dimension, std::set<T>& contents) : n(n_d
 * copy constructor implementation
 * assumes toCopy is already solved given that solve is called on construction
 */
+template <typename T>
 LatinSquare<T>::LatinSquare(const LatinSquare<T>& toCopy) : this.n(toCopy.n){
 
 	//aquire space for this' square
