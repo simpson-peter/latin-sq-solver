@@ -136,7 +136,7 @@ LatinSquare<T>::LatinSquare(unsigned n_dimension, std::set<T>& contents) : n(n_d
 * assumes toCopy is already solved given that solve is called on construction
 */
 template <typename T>
-LatinSquare<T>::LatinSquare(const LatinSquare<T>& toCopy) : this.n(toCopy.n){
+LatinSquare<T>::LatinSquare(const LatinSquare<T>& toCopy) : n(toCopy.n) {
 
 	//aquire space for this' square
 	//allocate the first column
