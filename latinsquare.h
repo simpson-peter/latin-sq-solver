@@ -140,17 +140,17 @@ LatinSquare<T>::LatinSquare(const LatinSquare<T>& toCopy) : n(toCopy.n) {
 
 	//aquire space for this' square
 	//allocate the first column
-	this.square = new T*[n];
+	square = new T*[n];
 
 	//allocate the rows
-	for(unsigned i = 0; i < this.n; i++){
-		this.square[i] = new T[n];
+	for(unsigned i = 0; i < n; i++){
+		square[i] = new T[n];
 	}
 
 	//copy toCopy's contents to this'
-	for(unsigned r = 0; r < this.n; r++){
-		for(unsigned c = 0; c < this.n; c++){
-			this.square[r][c] = toCopy.square[r][c];
+	for(unsigned r = 0; r < n; r++){
+		for(unsigned c = 0; c < n; c++){
+			square[r][c] = toCopy.square[r][c];
 		}
 	}
 
@@ -161,30 +161,30 @@ template <typename T>
 LatinSquare<T>& LatinSquare<T>::operator=(const LatinSquare<T>& rhs){
 
 	//if rhs' dimensions does not equal this', we must reallocate this' square array
-	if(rhs.n != this.n){
+	if(rhs.n != n){
 
 		//deallocate this' square
-		for(unsigned i = 0; i < this.n; i++){
-			delete [] this.square[i];
+		for(unsigned i = 0; i < n; i++){
+			delete [] square[i];
 		}
 
-		delete [] this.square;
+		delete [] square;
 
-		this.n = rhs.n;
+		n = rhs.n;
 
 		//allocate a new square for this with rhs' dimensions
-		this.square = new T*[rhs.n];
+		square = new T*[rhs.n];
 
 		//allocate the rows
 		for(unsigned i = 0; i < rhs.n; i++){
-			this.square[i] = new T[rhs.n];
+			square[i] = new T[rhs.n];
 		}
 	}
 
 	//copy rhs' contents into this'
-	for(unsigned r = 0; r < this.n; r++){
-		for(unsigned c = 0; c < this.n; c++){
-			this.square[r][c] = rhs.square[r][c];
+	for(unsigned r = 0; r < n; r++){
+		for(unsigned c = 0; c < n; c++){
+			square[r][c] = rhs.square[r][c];
 		}
 	}
 }
