@@ -12,9 +12,10 @@ From [Wikipedia](https://en.wikipedia.org/wiki/Latin_square): A **Latin square**
 ## Repository Contents
 This repository contains:
  - **README.md** (you are here!)
- -  **latinsquare.h** (templated implementation of the LatinSquare class)
+ - **latinsquare.h** (templated implementation of the LatinSquare class)
  - **test-sq.cpp** (a demonstrative test shell)
  - **Makefile**
+ - **License txt file** (MIT)
 
 ## How to Use the LatinSqaure Class
 ### Declaration
