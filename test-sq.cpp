@@ -8,25 +8,26 @@
 void test3x3Integer();
 void testNxNInteger(unsigned n);
 void test6x6Hex();
+void megaContents();
 
 /* NTS: EDGE CASES TO CHECK:
-* -Excessively large contents set
 * -Too small contents set
 * -Unordered int contents passed in
 * -Non-int LSqaure made with the minimal constructor
 * -See if this can work with a class that doesn't support << if I don't call print()
 */
-//this is a default testing suite to demo some of the basic possibilites of the Latin Square Solver
+//This is a default testing suite to demo some of the basic possibilites of the Latin Square Solver
 int main(int argc, char* argv[]){
 
 	test3x3Integer();
 	testNxNInteger(9);
 	test6x6Hex();
+	megaContents();
 
 	return 0;
 }
 
-//generates and prints a 3x3 Latin Square, populating it with numbers [0, 2] 
+//Generates and prints a 3x3 Latin Square, populating it with numbers [0, 2] 
 void test3x3Integer(){
 	std::set<int> int_contents;
 	int_contents.insert(0);
@@ -41,7 +42,7 @@ void test3x3Integer(){
 }
 
 /*
-* generates and prints a n x n Latin Square, 
+* Generates and prints a n x n Latin Square, 
 * populating it with a set of n random numbers in the range [0, n*2)
 */
 void testNxNInteger(unsigned n){
@@ -74,6 +75,7 @@ void testNxNInteger(unsigned n){
 	std::cout<<lsqaure_nxn_int<<std::endl;
 }
 
+//Generates and prints a 6 x 6 Latin Square populated with 6 color hex codes
 void test6x6Hex(){
 	//create a contents for a hex-dec Latin Square
 	std::set<std::string> hex_colors;
@@ -91,6 +93,25 @@ void test6x6Hex(){
 	lsqaure_hex.print(std::cout);
 }
 
+/*
+* Generates and prints a large contents set for the Latin square, but does not use most of it.
+*
+* This test case is illustrative of how the Latin Square's time complexity tracks with the dimension
+* of the square, rather than the size of the provided contents set.
+*/
+void megaContents(){
+	//create and populate at 1000 element integer set
+	std::set<int> int_contents;
+
+	for(int i = 0; i < 1000; i++){
+		int_contents.insert(i);
+	}
+
+	LatinSquare<int> lsqaure_int(4, int_contents);
+
+	std::cout<<"4 x 4 Integer Latin Square from 1000 element set"<<std::endl;
+	lsqaure_int.print(std::cout);
+}
 
 
 
