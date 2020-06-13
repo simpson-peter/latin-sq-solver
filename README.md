@@ -40,7 +40,6 @@ If you would like to use a new shell, simply replace "test-sq.cpp" with your fil
 
 ## Forthcoming Features
 
- - Deep Assignment Operator
  - A constructor for reduced Latin Squares
  - Const constructor
 
