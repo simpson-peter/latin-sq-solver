@@ -5,14 +5,6 @@
 #include <iostream>
 #include <iomanip>
 
-//NTS: Make sure asssignment doesn't cause memory loss issues.
-
-/*
-* To-Do:
-* Test assignment operator, make sure it doesn't cause memory leak issues
-* Test copy constructor
-*/
-
 /*
 * To-Add:
 * "Reduced" bool option
@@ -117,7 +109,7 @@ LatinSquare<T>::LatinSquare(unsigned n_dimension, std::set<T>& contents) : n(n_d
 		throw std::runtime_error("Size of set contents cannot be less than n.");
 	}
 
-	//aquire space for the square
+	//aquire space for the square:
 
 	//allocate the first column
 	square = new T*[n];
@@ -190,6 +182,10 @@ LatinSquare<T>& LatinSquare<T>::operator=(const LatinSquare<T>& rhs){
 }
 
 //NTS: Probably just have to overload this if making a reduced class
+/*
+* Top-level solve function, intializes the chain of recursive solveHelp calls
+* from (0, 0) to populate the Latin square
+*/
 template <typename T>
 void LatinSquare<T>::solve(std::set<T>& contents){
 	solveHelp(contents, 0, 0);
@@ -332,7 +328,6 @@ bool LatinSquare<T>::isValid(){
 	return true;
 }
 
-//NTS: CONSIDER ADDING FORMATTED OUTPUT
 template <typename T>
 void LatinSquare<T>::print(std::ostream& outstream){
 	outstream<<n<<" x "<<n<<" Latin Square" << std::endl;

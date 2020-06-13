@@ -13,6 +13,10 @@ void megaContents();
 /* NTS: EDGE CASES TO CHECK:
 * -Too small contents set
 * -Unordered int contents passed in
+* -Assignment Operator (use valgrind too)
+* -Const contents set (with const dimension)
+* -Const contesnts set and dimension
+* -Copy Constructor
 * -Non-int LSqaure made with the minimal constructor
 * -See if this can work with a class that doesn't support << if I don't call print()
 */
