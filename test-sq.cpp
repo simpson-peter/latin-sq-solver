@@ -5,6 +5,10 @@
 #include <stdlib.h>
 #include <time.h>
 
+void test3x3Integer();
+void testNxNInteger(unsigned n);
+void test6x6Hex();
+
 /* NTS: EDGE CASES TO CHECK:
 * -Excessively large contents set
 * -Too small contents set
@@ -16,7 +20,7 @@
 int main(int argc, char* argv[]){
 
 	test3x3Integer();
-	testNxNInteger();
+	testNxNInteger(9);
 	test6x6Hex();
 
 	return 0;
@@ -36,16 +40,32 @@ void test3x3Integer(){
 	std::cout<<lsqaure_int<<std::endl;
 }
 
-//generates and prints a n x n Latin Square, populating it with a set of n random numbers
-void testNxNInteger(int n){
+/*
+* generates and prints a n x n Latin Square, 
+* populating it with a set of n random numbers in the range [0, n*2)
+*/
+void testNxNInteger(unsigned n){
 
 	//seed random number generator
 	srand (time(NULL));
 
 	std::set<int> int_contents;
 
-	for(int i = 0; i < n; i++){
-		int_contents.insert(rand());
+	for(int i = 0; i < (int) n; i++){
+		//generate random number to be added
+		int new_int = rand() % (n*2);
+
+		//if new_int's not in the set, go ahead and add it.
+		if(int_contents.find(new_int) == int_contents.end()){
+
+			int_contents.insert(new_int);
+
+		//if new_int is in the set, we need to try again as the set does not accept duplicates
+		}else{
+
+			i = i-1;
+
+		}
 	}
 
 	LatinSquare<int> lsqaure_nxn_int(n, int_contents);
