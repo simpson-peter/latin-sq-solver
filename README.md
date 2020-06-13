@@ -36,7 +36,7 @@ Alternatively simply pass the object into a stream through the extraction operat
 
 ## How to Compile
 I have included a Makefile for compilation. In the command line, simply navigate to the LatinSqSolver repository, and type "make" for compilation into the test-sq executable using the default shell (non-interactive). 
-If you would like to use a new shell, simply replace "test-sq.cpp" with your filename in the Makefile, or just #include the latinsquare.h header file 
+If you would like to use a new shell, simply replace "test-sq.cpp" with your filename in the Makefile, or just #include the latinsquare.h header file to make use of the class within a larger program.
 
 ## Forthcoming Features
 
