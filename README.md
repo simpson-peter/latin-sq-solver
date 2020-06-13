@@ -23,7 +23,8 @@ LatinSquare classes must be typed using the template <type\> brackets.
 There is one constructor for the class. Declaration should follow the paradigm below:
 
     LatinSqaure<type> name(unsigned n, std::set<type> contents)
-where n <= contents.size()
+where n <= contents.size().
+
 The LatinSquare class will populate the Square with the first n items returned by an iterator through contents, so contents.size() may be larger than n. 
 The LatinSquare.solve() function is called upon construction, so the sqaure will be populated, solved, and validated upon declaration.
 
