@@ -16,21 +16,8 @@
 int main(int argc, char* argv[]){
 
 	test3x3Integer();
-
-	//create a contents for a hex-dec Latin Square
-	std::set<std::string> hex_colors;
-
-	hex_colors.insert("#d50000"); //Red
-	hex_colors.insert("#00c853"); //Green
-	hex_colors.insert("#2962ff"); //Blue
-	hex_colors.insert("#6200ea"); //Deep Purple
-	hex_colors.insert("#ffd600"); //Yellow
-	hex_colors.insert("#f7f7e1"); //Off-White
-
-	LatinSquare<std::string> lsqaure_hex(hex_colors.size(), hex_colors);
-
-	std::cout<<"The Second Latin Square: "<<std::endl;
-	lsqaure_hex.print(std::cout);
+	testNxNInteger();
+	test6x6Hex();
 
 	return 0;
 }
@@ -61,10 +48,27 @@ void testNxNInteger(int n){
 		int_contents.insert(rand());
 	}
 
-	LatinSquare<int> lsqaure_nxn_int(3, int_contents);
+	LatinSquare<int> lsqaure_nxn_int(n, int_contents);
 
 	std::cout<< n <<" x "<< n <<" Integer Latin Square: "<<std::endl;
 	std::cout<<lsqaure_nxn_int<<std::endl;
+}
+
+void test6x6Hex(){
+	//create a contents for a hex-dec Latin Square
+	std::set<std::string> hex_colors;
+
+	hex_colors.insert("#d50000"); //Red
+	hex_colors.insert("#00c853"); //Green
+	hex_colors.insert("#2962ff"); //Blue
+	hex_colors.insert("#6200ea"); //Deep Purple
+	hex_colors.insert("#ffd600"); //Yellow
+	hex_colors.insert("#f7f7e1"); //Off-White
+
+	LatinSquare<std::string> lsqaure_hex(hex_colors.size(), hex_colors);
+
+	std::cout<<"6 x 6 Hex Code Latin Square: "<<std::endl;
+	lsqaure_hex.print(std::cout);
 }
 
 
