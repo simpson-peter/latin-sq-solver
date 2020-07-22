@@ -27,8 +27,8 @@ class LatinSquare{
 public:
 
 	/*
-	*constructor for the templated Latin square. Set contents should contain at least n
-	*distinct Ts
+	* constructor for the templated Latin square. Set contents should contain at least n
+	* distinct Ts
 	*/
 	LatinSquare(unsigned n_dimension, std::set<T>& contents);
 
