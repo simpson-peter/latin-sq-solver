@@ -41,7 +41,7 @@ If you would like to use a new shell, simply replace "test-sq.cpp" with your fil
 ## Forthcoming Features
 
  - A constructor for reduced Latin Squares
- - Const constructor, solve function
+ - Const constructor, const solve function
 
 ## Known Issues
 None as of now, but as always submit issues or pull requests if you find any!
